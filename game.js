@@ -7,12 +7,15 @@
       var wins = 0;
       var losses = 0;
       var LifeLeft = 6;
+      var guesses=[];
+
 
       // When the user presses a key, it will run the following function...
       document.onkeyup = function(event) {
       computerChoices.indexOf(event.key)
         // Determine which key was pressed
         var userGuess = event.key;
+        guesses.push(userGuess);
     
 
         // Sets the computerGuess variable equal to a random choice from the computerChoice array.
@@ -24,17 +27,18 @@
           // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate counter.
           if (userGuess === computerGuess) {
             wins++;
-            userGuess.value;
+            
           }
          
           else if (userGuess !== computerGuess) {
            
             LifeLeft--;
-          	userGuess.value;
+          	
           	if(LifeLeft<0){
           		losses++;
-          		LifeLeft=0;
-       
+          		LifeLeft=6;
+          		guesses=[];
+
           		}
 
           	}
@@ -54,10 +58,9 @@
           "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
           "<p>life Left: " + LifeLeft + "</p>" +
-   		  "<p>Your letter so far: " + userGuess+ "</p>";
+   		  "<p>Your letter so far: " + guesses+ "</p>";
 
           // Injecting the HTML we just created into our div and updating the game information on our page.
           document.querySelector("#game").innerHTML = html;
 
-        }
-      };
+        };
