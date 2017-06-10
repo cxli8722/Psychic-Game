@@ -6,7 +6,8 @@
       // Variables for tracking our wins, losses and ties. They begin at 0.
       var wins = 0;
       var losses = 0;
-      var LifeLeft = 6;
+      // stick to one case format, javascript typically uses camelCase
+      var lifeLeft = 6;
       var guesses=[];
 
 
@@ -27,37 +28,29 @@
           // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate counter.
           if (userGuess === computerGuess) {
             wins++;
-            
           }
          
           else if (userGuess !== computerGuess) {
            
-            LifeLeft--;
+            lifeLeft--;
           	
-          	if(LifeLeft<0){
+          	if(lifeLeft<0){
           		losses++;
-          		LifeLeft=6;
+          		lifeLeft=6;
           		guesses=[];
-
           		}
-
           	}
    
 
          };
-          
-
-         
-
-
-
-         
-
+          // nitpicky comment, no need for some many blank lines
           // Here we create the HTML that will be injected into our div and displayed on the page.
+          // This below works fine, but you can  use javascript or jquery functions to updated existing blank
+          // elements in the html, rather than coding straight html in the js file. 
           var html = "<p>Press r, p or s to start playing!</p>" +
           "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
-          "<p>life Left: " + LifeLeft + "</p>" +
+          "<p>life Left: " + lifeLeft + "</p>" +
    		  "<p>Your letter so far: " + guesses+ "</p>";
 
           // Injecting the HTML we just created into our div and updating the game information on our page.
